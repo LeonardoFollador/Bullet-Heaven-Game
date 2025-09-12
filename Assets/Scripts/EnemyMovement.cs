@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         target = FindAnyObjectByType<PlayerMovement1>().transform;
-        moveSpeed = Random.Range(2.0f, 2.7f); // Velocidade randomica  
+        moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed* 1.2f); // Velocidade randomica  
     }
 
     // Update is called once per frame
@@ -31,11 +31,13 @@ public class EnemyMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (PlayerHealth.instance.tag == "Player" && hitCounter <= 0)
+
+        var player = collision.gameObject.GetComponent<PlayerHealth>();
+        if (player)
         {
-            PlayerHealth.instance.TakeDamage(damage);
+            player.TakeDamage(damage);
 
             hitCounter = hitWaitTime;
-        }  
+        }
     }
 }

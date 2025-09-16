@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
     public Rigidbody2D rb;
     public float moveSpeed, damage;
     private Transform target;
+    private Animator anim;
+
 
     public float hitWaitTime = 0.5f;
     private float hitCounter;
@@ -15,13 +16,19 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         target = FindAnyObjectByType<PlayerMovement1>().transform;
-        moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed* 1.2f); // Velocidade randomica  
+        moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed * 1.2f); // Velocidade randomica  
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.linearVelocity = (target.position - transform.position).normalized * moveSpeed;
+        Vector2 direction = (target.position - transform.position).normalized;
+
+        rb.linearVelocity = direction * moveSpeed;
+        anim.SetFloat("moveX", direction.x);
+        anim.SetFloat("moveY", direction.y);
+
 
         if (hitCounter > 0)
         {

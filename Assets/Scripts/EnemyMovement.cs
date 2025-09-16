@@ -36,15 +36,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // Da dano enquanto o trigger do colisor estiver ativo
+    void OnTriggerStay2D(Collider2D other)
     {
+        var player = other.gameObject.GetComponent<PlayerHealth>();
 
-        var player = collision.gameObject.GetComponent<PlayerHealth>();
         if (player)
         {
-            player.TakeDamage(damage);
-
-            hitCounter = hitWaitTime;
+            player.TakeDamage(damage * Time.deltaTime);
         }
     }
 }

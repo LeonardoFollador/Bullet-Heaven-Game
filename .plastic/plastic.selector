@@ -1,4 +1,0 @@
-repository "Bullet Heaven Game/Bullet Heaven Game@4674119488170@cloud"
-  path "/"
-    br "/main"
-    co "/main"

@@ -11,6 +11,8 @@ public class EnemyMovement : MonoBehaviour
     public float hitWaitTime = 0.5f;
     private float hitCounter;
 
+    public float health = 10f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +46,16 @@ public class EnemyMovement : MonoBehaviour
         if (player)
         {
             player.TakeDamage(damage * Time.deltaTime);
+        }
+    }
+
+    public void TakeDamage(float damageToTake)
+    {
+        health -= damageToTake;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

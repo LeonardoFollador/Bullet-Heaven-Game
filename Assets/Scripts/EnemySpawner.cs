@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -12,6 +14,11 @@ public class EnemySpawner : MonoBehaviour
     public float timeToSpawn;
     private float spawnCounter;
 
+    private float despawnDistance;
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    public int checkPerFrame;
+    private int enemyToCheck;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +30,8 @@ public class EnemySpawner : MonoBehaviour
         {
             target = player.GetComponent<Transform>();
         }
+
+        despawnDistance = Vector3.Distance(transform.position, maxSpawn.position) + 7f;
     }
 
     // Update is called once per frame
@@ -34,10 +43,29 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnCounter = timeToSpawn;
 
-            Instantiate(enemyToSpawn, SelectSpawnPoint(), transform.rotation);
+            GameObject newEnemy = Instantiate(enemyToSpawn, SelectSpawnPoint(), transform.rotation);
+
+            spawnedEnemies.Add(newEnemy);
         }
 
-        transform.position = target.position;
+        if (target != null)
+        {
+            transform.position = target.position;
+        }
+
+        for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
+        {
+            if (spawnedEnemies[i] == null)
+            {
+                spawnedEnemies.RemoveAt(i);
+            }
+            else if (Vector3.Distance(transform.position, spawnedEnemies[i].transform.position) > despawnDistance)
+            {
+                Destroy(spawnedEnemies[i]);
+
+                spawnedEnemies.RemoveAt(i);
+            }
+        }
     }
 
     public Vector3 SelectSpawnPoint()

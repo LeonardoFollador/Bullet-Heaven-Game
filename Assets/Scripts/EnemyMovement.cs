@@ -51,13 +51,18 @@ public class EnemyMovement : MonoBehaviour
 
     public void TakeDamage(float damageToTake)
     {
-        health -= damageToTake;
-
-        if (health <= 0)
+        if (hitCounter <= 0)
         {
-            Destroy(gameObject);
-        }
+            health -= damageToTake;
 
-        DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
+
+            hitCounter = hitWaitTime;
+        }
     }
 }

@@ -9,6 +9,9 @@ public class EnemyDamager : MonoBehaviour
 
     public bool destroyParent;
 
+    public float damageRate = 0.5f; // Dano a cada 0.5 segundos. Ajuste no Inspector.
+    private float nextDamage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,11 +43,16 @@ public class EnemyDamager : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (collision.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-            collision.GetComponent<EnemyMovement>().TakeDamage(damageAmount);
+            // Agora apenas tentamos dar o dano. O inimigo vai filtrar com base no cooldown dele.
+            EnemyMovement enemy = other.GetComponent<EnemyMovement>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damageAmount);
+            }
         }
     }
 }

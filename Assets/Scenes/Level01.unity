@@ -880,10 +880,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c9be6b0707f334cbdb811b7558c166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamager
-  damageAmount: 10
+  damageAmount: 2
   lifeTime: 5
   growSpeed: 2
   destroyParent: 1
+  damageRate: 0.5
 --- !u!1 &569617076
 GameObject:
   m_ObjectHideFlags: 0

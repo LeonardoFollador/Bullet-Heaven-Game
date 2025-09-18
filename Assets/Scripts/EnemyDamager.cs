@@ -7,6 +7,8 @@ public class EnemyDamager : MonoBehaviour
     public float lifeTime, growSpeed = 4f;
     private Vector3 targetSize;
 
+    public bool destroyParent;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +31,11 @@ public class EnemyDamager : MonoBehaviour
             if (transform.localScale.x == 0f)
             {
                 Destroy(gameObject);
+
+                if(destroyParent)
+                {
+                    Destroy(transform.parent.gameObject);
+                }
             }
         }
     }

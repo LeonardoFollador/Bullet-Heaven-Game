@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   rb: {fileID: 7083124235652362088}
-  moveSpeed: 3
+  moveSpeed: 1.5
   damage: 10
   hitWaitTime: 0.5
   health: 10

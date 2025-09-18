@@ -57,5 +57,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }
 }

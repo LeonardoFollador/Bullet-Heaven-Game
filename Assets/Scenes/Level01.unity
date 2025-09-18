@@ -707,6 +707,8 @@ MonoBehaviour:
   damage: 5
   hitWaitTime: 0.5
   health: 10
+  knockbackTime: 0.5
+  knockBackCounter: 0
 --- !u!1 &361918102
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +887,7 @@ MonoBehaviour:
   growSpeed: 2
   destroyParent: 1
   damageRate: 0.5
+  shouldKnockback: 1
 --- !u!1 &569617076
 GameObject:
   m_ObjectHideFlags: 0

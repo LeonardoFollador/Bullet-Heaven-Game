@@ -13,6 +13,9 @@ public class EnemyMovement : MonoBehaviour
 
     public float health = 10f;
 
+    public float knockbackTime = 0.5f;
+    public float knockBackCounter;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +23,24 @@ public class EnemyMovement : MonoBehaviour
         target = FindAnyObjectByType<PlayerMovement1>().transform;
         moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed * 1.2f); // Velocidade randomica  
         anim = GetComponent<Animator>();
+    }
+
+    public void Update()
+    {
+        if (knockBackCounter > 0)
+        {
+            knockBackCounter -= Time.deltaTime;
+
+            if (moveSpeed > 0)
+            {
+                moveSpeed = -moveSpeed * 0.5f;
+            }
+
+            if (knockBackCounter <= 0)
+            {
+                moveSpeed = Mathf.Abs(moveSpeed * 2f);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -63,6 +84,16 @@ public class EnemyMovement : MonoBehaviour
             DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
 
             hitCounter = hitWaitTime;
+        }
+    }
+
+    public void TakeDamage(float damageToTake, bool shouldKnockback)
+    {
+        TakeDamage(damageToTake);
+
+        if (shouldKnockback)
+        {
+            knockBackCounter = knockbackTime;
         }
     }
 }

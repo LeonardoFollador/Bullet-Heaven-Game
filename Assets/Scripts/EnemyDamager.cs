@@ -12,6 +12,8 @@ public class EnemyDamager : MonoBehaviour
     public float damageRate = 0.5f; // Dano a cada 0.5 segundos. Ajuste no Inspector.
     private float nextDamage;
 
+    public bool shouldKnockback;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,17 +27,17 @@ public class EnemyDamager : MonoBehaviour
     void Update()
     {
         transform.localScale = Vector3.MoveTowards(transform.localScale, targetSize, growSpeed * Time.deltaTime);
-    
+
         lifeTime -= Time.deltaTime;
 
-        if(lifeTime <= 0)
+        if (lifeTime <= 0)
         {
             targetSize = Vector3.zero;
             if (transform.localScale.x == 0f)
             {
                 Destroy(gameObject);
 
-                if(destroyParent)
+                if (destroyParent)
                 {
                     Destroy(transform.parent.gameObject);
                 }
@@ -51,7 +53,7 @@ public class EnemyDamager : MonoBehaviour
             EnemyMovement enemy = other.GetComponent<EnemyMovement>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damageAmount);
+                enemy.TakeDamage(damageAmount, shouldKnockback);
             }
         }
     }

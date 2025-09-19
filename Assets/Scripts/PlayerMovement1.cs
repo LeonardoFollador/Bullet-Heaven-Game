@@ -8,6 +8,8 @@ public class PlayerMovement1 : MonoBehaviour
 
     private Vector2 moveInput;
 
+    public float pickupRange = 1.5f;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -23,24 +25,24 @@ public class PlayerMovement1 : MonoBehaviour
         moveInput = new Vector2(moveX, moveY);
 
         // Atualiza o Animator
-        if (moveInput.sqrMagnitude > 0.01f) // Se o jogador está se movendo
+        if (moveInput.sqrMagnitude > 0.01f) // Se o jogador estï¿½ se movendo
         {
             anim.SetBool("isMoving", true);
 
-            // Atualiza os parâmetros de direção. A Blend Tree de ANDAR vai usar isso.
+            // Atualiza os parï¿½metros de direï¿½ï¿½o. A Blend Tree de ANDAR vai usar isso.
             anim.SetFloat("moveX", moveX);
             anim.SetFloat("moveY", moveY);
         }
-        else // Se o jogador está PARADO
+        else // Se o jogador estï¿½ PARADO
         {
             anim.SetBool("isMoving", false);
-            // O Animator vai parar de receber atualizações de direção aqui.
-            // Ele vai continuar usando os ÚLTIMOS VALORES de moveX e moveY que recebeu,
-            // fazendo a Blend Tree de IDLE mostrar a direção correta.
+            // O Animator vai parar de receber atualizaï¿½ï¿½es de direï¿½ï¿½o aqui.
+            // Ele vai continuar usando os ï¿½LTIMOS VALORES de moveX e moveY que recebeu,
+            // fazendo a Blend Tree de IDLE mostrar a direï¿½ï¿½o correta.
         }
     }
 
-    // FixedUpdate para aplicar física (movimento)
+    // FixedUpdate para aplicar fï¿½sica (movimento)
     void FixedUpdate()
     {
         // Aplica o movimento

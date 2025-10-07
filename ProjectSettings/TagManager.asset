@@ -54,11 +54,11 @@ TagManager:
   - name: Pickups
     uniqueID: 2001398309
     locked: 0
-  - name: UI
-    uniqueID: 2239206889
-    locked: 0
   - name: Player
     uniqueID: 4189426099
+    locked: 0
+  - name: UI
+    uniqueID: 2239206889
     locked: 0
   m_RenderingLayers:
   - Default

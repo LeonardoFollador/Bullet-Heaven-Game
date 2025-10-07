@@ -1,4 +1,5 @@
 using UnityEngine;
+using Terresquall;
 
 public class PlayerMovement1 : MonoBehaviour
 {
@@ -18,9 +19,20 @@ public class PlayerMovement1 : MonoBehaviour
 
     void Update()
     {
+        float moveX, moveY;
         // Pega o input do jogador
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        if (VirtualJoystick.CountActiveInstances() > 0)
+        {
+            moveX = VirtualJoystick.GetAxisRaw("Horizontal");
+            moveY = VirtualJoystick.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            moveX = Input.GetAxisRaw("Horizontal");
+            moveY = Input.GetAxisRaw("Vertical");
+        }
+
+        
 
         moveInput = new Vector2(moveX, moveY);
 

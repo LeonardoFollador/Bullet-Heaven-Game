@@ -23,8 +23,8 @@ public class PlayerMovement1 : MonoBehaviour
         // Pega o input do jogador
         if (VirtualJoystick.CountActiveInstances() > 0)
         {
-            moveX = VirtualJoystick.GetAxisRaw("Horizontal");
-            moveY = VirtualJoystick.GetAxisRaw("Vertical");
+            moveX = VirtualJoystick.GetAxis("Horizontal");
+            moveY = VirtualJoystick.GetAxis("Vertical");
         }
         else
         {

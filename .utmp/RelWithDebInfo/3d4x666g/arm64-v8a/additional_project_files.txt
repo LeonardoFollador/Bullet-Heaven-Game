@@ -1,0 +1,17 @@
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/GAToUnityCallbacks.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroEnd.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroHeaderBegin.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroSourceBegin.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAApplication.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAConfiguration.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGADebug.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAEvents.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAInput.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGASoftKeyboard.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGASoftKeyboardCallbacks.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGATypes.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAVersion.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGACallbacks.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAConfigurationCallbacks.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAKeyEventCallbacks.h
+/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAMotionEventCallbacks.h

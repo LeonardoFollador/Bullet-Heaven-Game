@@ -60,5 +60,8 @@ TagManager:
   - name: UI
     uniqueID: 2239206889
     locked: 0
+  - name: Terrain
+    uniqueID: 895385917
+    locked: 0
   m_RenderingLayers:
   - Default

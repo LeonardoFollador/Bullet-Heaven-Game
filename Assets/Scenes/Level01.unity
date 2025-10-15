@@ -2319,15 +2319,40 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 892175902598873323, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 892175902598873323, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141584907557586330, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592077458579122057, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592077458579122057, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.31
+      objectReference: {fileID: 0}
     - target: {fileID: 2682230408894073737, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.21
+      value: -6.83
       objectReference: {fileID: 0}
     - target: {fileID: 2682230408894073737, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.28
+      value: 4.53
       objectReference: {fileID: 0}
     - target: {fileID: 3611599450439502949, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
         type: 3}
@@ -2378,6 +2403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428875919184371770, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8564532783602148750, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
         type: 3}

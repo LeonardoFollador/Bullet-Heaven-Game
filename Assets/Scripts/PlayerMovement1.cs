@@ -7,7 +7,7 @@ public class PlayerMovement1 : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb; // usar Rigidbody2D para movimento 2D
 
-    private Vector2 moveInput;
+    public Vector2 moveInput;
 
     public float pickupRange = 1.5f;
 
@@ -32,7 +32,7 @@ public class PlayerMovement1 : MonoBehaviour
             moveY = Input.GetAxisRaw("Vertical");
         }
 
-        
+
 
         moveInput = new Vector2(moveX, moveY);
 

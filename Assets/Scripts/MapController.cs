@@ -11,8 +11,13 @@ public class MapController : MonoBehaviour
     public GameObject currentChunk;
     PlayerMovement1 pm;
 
-    // NOVO: registrar posições já usadas
     private HashSet<Vector3> spawnedPositions = new HashSet<Vector3>();
+
+    [Header("Optimization")]
+    public List<GameObject> spawnedChunks;
+    public GameObject latestChunk;
+    public float maxOptDist; // deve ser maior que a largura e altura do tilemap 
+    float optDist;
 
     void Start()
     {
@@ -22,27 +27,25 @@ public class MapController : MonoBehaviour
     void Update()
     {
         ChunkChecker();
+        ChunkOptimizer();
     }
 
     void ChunkChecker()
     {
         if (!currentChunk) return;
 
-        Vector2 input = pm.moveInput; // supondo que seja Vector2
-        float deadzone = 0.25f; // ajuste conforme necessário
+        Vector2 input = pm.moveInput;
+        float deadzone = 0.25f;
         Vector3 checkPos = Vector3.zero;
 
         float absX = Mathf.Abs(input.x);
         float absY = Mathf.Abs(input.y);
 
-        // Decide direção principal com deadzone
         if (absX < deadzone && absY < deadzone)
         {
-            // sem movimento significativo
             return;
         }
 
-        // Se eixo X dominante -> direita ou esquerda
         if (absX > absY)
         {
             if (input.x > 0)
@@ -122,5 +125,22 @@ public class MapController : MonoBehaviour
         int rand = Random.Range(0, terrainChunks.Count);
         GameObject newChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
         spawnedPositions.Add(noTerrainPosition);
+        spawnedChunks.Add(newChunk);
+    }
+
+    void ChunkOptimizer()
+    {
+        foreach (GameObject chunk in spawnedChunks)
+        {
+            optDist = Vector3.Distance(player.transform.position, chunk.transform.position);
+            if (optDist > maxOptDist)
+            {
+                chunk.SetActive(false);
+            }
+            else
+            {
+                chunk.SetActive(true);
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8649073484078581406}
   - component: {fileID: 7815178415551182890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: terrain_atlas_431
   m_TagString: Untagged
   m_Icon: {fileID: 0}

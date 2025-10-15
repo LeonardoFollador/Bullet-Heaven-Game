@@ -1908,12 +1908,13 @@ MonoBehaviour:
   - {fileID: 8564532783602148750, guid: a43064aa0632e46f2b90865730542310, type: 3}
   - {fileID: 8564532783602148750, guid: 5084d9f99b77a43d7a01faca5b415b41, type: 3}
   - {fileID: 8564532783602148750, guid: ffb742ba1e99140408a11cf67046e95f, type: 3}
-  player: {fileID: 0}
-  checkerRadius: 0.2
+  checkerRadius: 0
   terrainMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   currentChunk: {fileID: 0}
+  chunkWidth: 0
+  chunkHeight: 0
 --- !u!1 &1460574674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,6 +2434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595366205006080733, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8564532783602148750, guid: 3aa3f8846196946eaa3bfd64c67a0d38,
         type: 3}

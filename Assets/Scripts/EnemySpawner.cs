@@ -1,10 +1,8 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
     public GameObject enemyToSpawn;
     private GameObject player;
 
@@ -16,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float despawnDistance;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
+
     public int checkPerFrame;
     private int enemyToCheck;
 
@@ -23,10 +22,24 @@ public class EnemySpawner : MonoBehaviour
     private int currentWave;
     private float waveCounter;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // --- PROPRIEDADES ADICIONADAS ---
+    [Header("Spawn de Inimigos Antigos")]
+    [Tooltip("Tempo em segundos entre as tentativas de spawn de inimigos de waves anteriores.")]
+    public float oldEnemySpawnRate = 3.0f;
+    private float oldEnemySpawnCounter;
+
+    [Tooltip("Probabilidade (0 a 1) de um inimigo antigo ser spawnado no ciclo (menor = mais raro).")]
+    public float oldEnemySpawnChance = 0.5f;
+
+    // --- PROPRIEDADE PARA LIMITAÇÃO ---
+    [Header("Limitação")]
+    private const int MAX_ENEMIES = 30;
+    // --------------------------------------
+
     void Start()
     {
         spawnCounter = timeToSpawn;
+        oldEnemySpawnCounter = oldEnemySpawnRate; // Inicializa o contador de inimigos antigos
 
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -41,21 +54,9 @@ public class EnemySpawner : MonoBehaviour
         GoToNextWave();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /*spawnCounter -= Time.deltaTime;
-
-        if (spawnCounter <= 0)
-        {
-            spawnCounter = timeToSpawn;
-
-            GameObject newEnemy = Instantiate(enemyToSpawn, SelectSpawnPoint(), transform.rotation);
-
-            spawnedEnemies.Add(newEnemy);
-        }*/
-
-        if (PlayerHealth.instance.gameObject.activeSelf)
+        if (PlayerHealth.instance != null && PlayerHealth.instance.gameObject.activeSelf)
         {
             if (currentWave < waves.Count)
             {
@@ -65,23 +66,39 @@ public class EnemySpawner : MonoBehaviour
                     GoToNextWave();
                 }
 
+                // Inimigo da Wave Atual
                 spawnCounter -= Time.deltaTime;
                 if (spawnCounter <= 0)
                 {
                     spawnCounter = waves[currentWave].timeBetweenSpawns;
 
-                    GameObject newEnemy = Instantiate(waves[currentWave].enemyToSpawn, SelectSpawnPoint(), Quaternion.identity);
+                    if (spawnedEnemies.Count < MAX_ENEMIES)
+                    {
+                        SpawnEnemy(waves[currentWave].enemyToSpawn);
+                    }
+                }
 
-                    spawnedEnemies.Add(newEnemy);
+                // Inimigos Antigos
+                oldEnemySpawnCounter -= Time.deltaTime;
+                if (oldEnemySpawnCounter <= 0)
+                {
+                    oldEnemySpawnCounter = oldEnemySpawnRate;
+
+                    if (spawnedEnemies.Count < MAX_ENEMIES)
+                    {
+                        TrySpawnOldEnemy();
+                    }
                 }
             }
         }
 
+        // Move o spawner para a posição do Player
         if (target != null)
         {
             transform.position = target.position;
         }
 
+        // Destrói inimigos que estão muito longe.
         for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
         {
             if (spawnedEnemies[i] == null)
@@ -91,11 +108,37 @@ public class EnemySpawner : MonoBehaviour
             else if (Vector3.Distance(transform.position, spawnedEnemies[i].transform.position) > despawnDistance)
             {
                 Destroy(spawnedEnemies[i]);
-
                 spawnedEnemies.RemoveAt(i);
             }
         }
     }
+
+    private void SpawnEnemy(GameObject enemyPrefab)
+    {
+        GameObject newEnemy = Instantiate(enemyPrefab, SelectSpawnPoint(), Quaternion.identity);
+        spawnedEnemies.Add(newEnemy);
+    }
+
+    // FUNÇÃO DE SPAWN ANTIGO
+    private void TrySpawnOldEnemy()
+    {
+        // Só tenta spawnar se houver waves anteriores
+        if (currentWave <= 0)
+        {
+            return;
+        }
+
+        // chance para aparecer em menor número
+        if (Random.value < oldEnemySpawnChance)
+        {
+            // Escolhe aleatoriamente uma wave entre 0 e (currentWave - 1)
+            int randWaveIndex = Random.Range(0, currentWave);
+            GameObject oldEnemyPrefab = waves[randWaveIndex].enemyToSpawn;
+
+            SpawnEnemy(oldEnemyPrefab);
+        }
+    }
+    // ------------------------------
 
     public Vector3 SelectSpawnPoint()
     {
@@ -147,6 +190,7 @@ public class EnemySpawner : MonoBehaviour
     }
 }
 
+// --- CLASSE PARA CONFIGURAÇÃO DE WAVES ---
 [System.Serializable]
 public class WaveInfo
 {

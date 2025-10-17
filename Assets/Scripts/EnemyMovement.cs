@@ -16,7 +16,6 @@ public class EnemyMovement : MonoBehaviour
     public float knockbackTime = 0.5f;
     public float knockBackCounter;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -79,6 +78,8 @@ public class EnemyMovement : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+                ScoreController.updateScore(gameObject.name);
+                
             }
 
             DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);

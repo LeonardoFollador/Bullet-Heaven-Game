@@ -103,7 +103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 468355585
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -6857289086807993182, guid: 56d12aafcebc3306295c1488ef9726d6,
     type: 3}
@@ -197,3 +197,5 @@ MonoBehaviour:
   damage: 10
   hitWaitTime: 0.5
   health: 10
+  knockbackTime: 0.5
+  knockBackCounter: 0

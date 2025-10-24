@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotaoJogar
   botaoJogar: {fileID: 798920093}
+  inputNome: {fileID: 1935837490}
 --- !u!1 &993982249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotaoJogar
   botaoJogar: {fileID: 0}
+  inputNome: {fileID: 0}
 --- !u!4 &1461697139
 Transform:
   m_ObjectHideFlags: 0

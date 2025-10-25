@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public static class ScoreController
 {
@@ -17,5 +18,10 @@ public static class ScoreController
     {
         string key = enemyType.Replace("(Clone)", "");
         score += scoreByEnemyType[key];
+    }
+
+    public static int getScore()
+    {
+        return score;
     }
 }

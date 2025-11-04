@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public GameOverController gameOverController;
+
     public static PlayerHealth instance;
 
     public float currentHealth, maxHealth;
@@ -55,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             dead = true;
 
-            // Chama a animação de morte
+            // Chama a animaï¿½ï¿½o de morte
             if (anim != null)
             {
                 anim.SetTrigger("isDead");
@@ -63,12 +65,13 @@ public class PlayerHealth : MonoBehaviour
 
             // Para o movimento do jogador
             GetComponent<PlayerMovement1>().enabled = false;
+            gameOverController.ShowGameOverUI();
         }
     }
 
     public void FreezeGame()
     {
-        // Trava a animação no último frame
+        // Trava a animaï¿½ï¿½o no ï¿½ltimo frame
         if (anim != null)
         {
             anim.enabled = false;

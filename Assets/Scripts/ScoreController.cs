@@ -24,4 +24,9 @@ public static class ScoreController
     {
         return score;
     }
+
+    public static void restartScore()
+    {
+        score = 0;
+    }
 }

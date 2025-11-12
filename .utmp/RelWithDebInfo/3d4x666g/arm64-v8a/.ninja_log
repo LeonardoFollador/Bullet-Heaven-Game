@@ -1,10 +1,19 @@
 # ninja log v5
-1	622	1759881342875973310	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f9dae42c6482b54f
-1	641	1759881342895973310	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3c8862aa7fc516d2
-1	715	1759881342970973310	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7f95d3feb1c85875
-1	779	1759881343032973310	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	c4326df6759a7a99
-0	784	1759881343037973310	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	85684c4d20ad0997
-1	800	1759881343054973310	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	7dd67f09e04fe13d
-1	824	1759881343079973310	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	875d1dd4f89bf75e
 0	998	1759881343252973309	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	36154450fa0a894f
+1	824	1759881343079973310	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	875d1dd4f89bf75e
+1	800	1759881343054973310	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	7dd67f09e04fe13d
+0	784	1759881343037973310	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	85684c4d20ad0997
+1	779	1759881343032973310	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	c4326df6759a7a99
+1	715	1759881342970973310	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7f95d3feb1c85875
+1	641	1759881342895973310	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3c8862aa7fc516d2
 998	1015	1759881343272973309	/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d4x666g/obj/arm64-v8a/libgame.so	9fb6fbed5ea85c11
+1	622	1759881342875973310	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f9dae42c6482b54f
+6	858	1762904754939131236	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	875d1dd4f89bf75e
+4	1005	1762904755090134737	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f9dae42c6482b54f
+5	1117	1762904755200137287	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7f95d3feb1c85875
+5	1174	1762904755260138678	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3c8862aa7fc516d2
+4	1205	1762904755289139351	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	7dd67f09e04fe13d
+3	1222	1762904755307139768	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	85684c4d20ad0997
+3	1224	1762904755307139768	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	36154450fa0a894f
+5	1414	1762904755500144243	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	c4326df6759a7a99
+1414	1446	1762904755535145054	/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d4x666g/obj/arm64-v8a/libgame.so	9fb6fbed5ea85c11

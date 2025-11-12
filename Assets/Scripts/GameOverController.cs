@@ -4,8 +4,10 @@ using TMPro;
 public class GameOverController : MonoBehaviour
 {
     public TextMeshProUGUI scoreValue;
+    private int score;
     public GameObject gameOverCanvas;
     private bool isGameOver = false;
+    public DatabaseManager dbManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +20,12 @@ public class GameOverController : MonoBehaviour
     {
         Debug.Log("Mostrando a tela");
         gameOverCanvas.SetActive(true);
-        scoreValue.text = "" + ScoreController.getScore();
+        score = ScoreController.getScore();
+        scoreValue.text = "" + score;
         ScoreController.restartScore();
+
+        string nomeJogador = PlayerPrefs.GetString("NomeJogador", "Jogador");
+        dbManager.InsertHistory(nomeJogador, score);
+
     }
 }

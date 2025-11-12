@@ -1,10 +1,10 @@
 # ninja log v5
-0	701	1759881347191973294	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ae97c57b514fc101
-1	854	1759881347353973293	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	23247147a171621a
-1	878	1759881347377973293	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	82a324d59ea582de
-0	966	1759881347465973293	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b170011f2d58e564
-1	991	1759881347490973293	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	72942cb005ad2f2
-0	1113	1759881347611973292	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	e25c05b108a4119b
-1	1226	1759881347725973292	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8fc51b53f6e97634
-0	1272	1759881347769973292	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	24f3fb2e12742417
-1272	1296	1759881347798973292	/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d4x666g/obj/armeabi-v7a/libgame.so	94c0266e6f3b1bfc
+4	859	1762904756967178252	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	72942cb005ad2f2
+3	1120	1762904757229184325	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ae97c57b514fc101
+1	1156	1762904757263185114	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b170011f2d58e564
+1	1223	1762904757331186690	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	24f3fb2e12742417
+4	1283	1762904757392188104	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	23247147a171621a
+8	1334	1762904757442189263	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	82a324d59ea582de
+2	1366	1762904757477190074	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	e25c05b108a4119b
+3	1470	1762904757581192485	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8fc51b53f6e97634
+1470	1499	1762904757612193204	/home/luiz/Documentos/Projetos/bullet-heaven/Bullet-Heaven-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d4x666g/obj/armeabi-v7a/libgame.so	94c0266e6f3b1bfc

@@ -32,6 +32,7 @@ public class MostrarRank : MonoBehaviour
         foreach (var h in ranking)
         {
             textRank.text += $"{cont} {h.Name} {h.Score}\n";
+            cont++;
         }
 
     }

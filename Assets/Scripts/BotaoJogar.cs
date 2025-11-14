@@ -13,7 +13,7 @@ public class BotaoJogar : MonoBehaviour
         if (botaoJogar != null)
             botaoJogar.onClick.AddListener(IniciarJogo);
         else
-            Debug.LogWarning("Botão 'Jogar' não foi atribuído no Inspector.");
+            Debug.LogWarning("Botï¿½o 'Jogar' nï¿½o foi atribuï¿½do no Inspector.");
     }
 
     void IniciarJogo()
@@ -26,7 +26,7 @@ public class BotaoJogar : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Campo de nome está vazio ou não atribuído!");
+            Debug.LogWarning("Campo de nome estï¿½ vazio ou nï¿½o atribuï¿½do!");
         }
 
         SceneManager.LoadScene("Level01");

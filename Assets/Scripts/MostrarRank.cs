@@ -1,20 +1,20 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class MostrarRank : MonoBehaviour
 {
 
-    public Button botaoRank;
+    public TextMeshProUGUI textRank;
 
     public DatabaseManager dbManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (botaoRank != null)
-            botaoRank.onClick.AddListener(mostrarTopRank);
+        if (textRank != null)
+            mostrarTopRank();
         else
-            Debug.LogWarning("Bot�o 'Jogar' n�o foi atribu�do no Inspector.");
+            Debug.LogWarning("Texto dos ranks não foi atríbuido no Inspector.");
     }
 
     // Update is called once per frame
@@ -25,11 +25,13 @@ public class MostrarRank : MonoBehaviour
 
     void mostrarTopRank()
     {
+        int cont = 1;
+        textRank.text = "";
         var ranking = dbManager.GetTopRank();
 
         foreach (var h in ranking)
         {
-            Debug.Log($"ID: {h.Id}, Name: {h.Name}, Score: {h.Score}");
+            textRank.text += $"{cont} {h.Name} {h.Score}\n";
         }
 
     }

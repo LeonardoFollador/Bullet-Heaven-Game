@@ -7,7 +7,7 @@ public static class ScoreController
     public static int score = 0;
     private static Dictionary<string, int> scoreByEnemyType = new Dictionary<string, int>()
     {
-        {"Enemy_1_caveiragame", 100},
+        {"Enemy_1_caveira", 100},
         {"Enemy_2_minotauro", 200 },
         {"Enemy_3_voador", 25 },
         {"Enemy_4_coelho", 300},

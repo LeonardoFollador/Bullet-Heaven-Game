@@ -44,6 +44,7 @@ public class DatabaseManager : MonoBehaviour
     {
     return _connection.Table<History>()
                       .OrderByDescending(h => h.Score)
+                      .Take(5)
                       .ToList();
     }
 

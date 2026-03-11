@@ -13,6 +13,10 @@ public class PlayerHealth : MonoBehaviour
 
     private Animator anim;
     private bool dead = false;
+    
+    private float cureCounter=0;
+
+    private float timeToCure = 5;
 
     void Awake()
     {
@@ -37,7 +41,28 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dead) return;
 
+        cureCounter += Time.deltaTime;
+
+
+        if (cureCounter > timeToCure)
+        {
+            cureCounter = 0;
+
+            currentHealth += 10;
+
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+            
+            if (healthSlider != null)
+            {
+                // Atualiza a barra de vida
+                healthSlider.value = currentHealth;
+            }
+        }
     }
 
     public void TakeDamage(float damage)
@@ -45,6 +70,7 @@ public class PlayerHealth : MonoBehaviour
         if (dead) return;
 
         currentHealth -= damage;
+        cureCounter = 0;
 
         if (healthSlider != null)
         {

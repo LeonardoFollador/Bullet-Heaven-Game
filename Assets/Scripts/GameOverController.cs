@@ -8,6 +8,8 @@ public class GameOverController : MonoBehaviour
     public GameObject gameOverCanvas;
     private bool isGameOver = false;
     public DatabaseManager dbManager;
+
+    public GameObject gameHudCanvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +20,7 @@ public class GameOverController : MonoBehaviour
 
     public void ShowGameOverUI()
     {
-        Debug.Log("Mostrando a tela");
+        gameHudCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
         score = ScoreController.getScore();
         scoreValue.text = "" + score;

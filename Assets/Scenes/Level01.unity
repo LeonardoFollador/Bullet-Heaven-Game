@@ -741,10 +741,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2146199726}
   - {fileID: 498061781}
   - {fileID: 318188838}
   - {fileID: 592098428}
+  - {fileID: 2146199726}
   m_Father: {fileID: 231969539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2479,6 +2479,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2515,12 +2530,12 @@ PrefabInstance:
     - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 399.99988
       objectReference: {fileID: 0}
     - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 222
+      value: 221.99994
       objectReference: {fileID: 0}
     - target: {fileID: 8834734170784175513, guid: 5c2cb823f1af59541974bd4a360355f6,
         type: 3}
@@ -2793,6 +2808,7 @@ MonoBehaviour:
   scoreValue: {fileID: 560092152}
   gameOverCanvas: {fileID: 1147750836}
   dbManager: {fileID: 1158007940}
+  gameHudCanvas: {fileID: 310595471}
 --- !u!1 &1158007939
 GameObject:
   m_ObjectHideFlags: 0

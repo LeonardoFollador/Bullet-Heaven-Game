@@ -6,6 +6,12 @@ public class MostrarRank : MonoBehaviour
 
     public TextMeshProUGUI textRank;
 
+    public TextMeshProUGUI positionRank;
+
+    public TextMeshProUGUI nameRank;
+
+    public TextMeshProUGUI scoreRank;
+
     public DatabaseManager dbManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,9 +35,15 @@ public class MostrarRank : MonoBehaviour
         textRank.text = "";
         var ranking = dbManager.GetTopRank();
 
+        positionRank.text = "";
+        nameRank.text = "";
+        scoreRank.text = "";
+
         foreach (var h in ranking)
         {
-            textRank.text += $"{cont} {h.Name} {h.Score}\n";
+            positionRank.text += cont.ToString() + '\n';
+            nameRank.text += h.Name + '\n';
+            scoreRank.text += h.Score.ToString() + '\n';
             cont++;
         }
 

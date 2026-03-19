@@ -20,7 +20,11 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Aceleração por Tempo")]
     public float maxMoveSpeed = 15f;
-    public float accelerationRate = 1.2f;
+    public float accelerationRate = 100.0f;
+
+    private float timeToUpdateMoveSpeed = 0;
+
+    private const float TIME_TO_UPDATE_MOVE_SPEED = 0.2f;
 
     [Header("Configuração de Ataque")]
     public int hitsToReset = 1;
@@ -43,6 +47,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void Update()
     {
+        timeToUpdateMoveSpeed += Time.deltaTime;
+
         if (knockBackCounter > 0)
         {
             knockBackCounter -= Time.deltaTime;
@@ -52,7 +58,10 @@ public class EnemyMovement : MonoBehaviour
 
         if (hitCounter <= 0 && knockBackCounter <= 0)
         {
-            moveSpeed = Mathf.MoveTowards(moveSpeed, maxMoveSpeed, accelerationRate * Time.deltaTime);
+            if (timeToUpdateMoveSpeed > TIME_TO_UPDATE_MOVE_SPEED){
+                moveSpeed = Mathf.MoveTowards(moveSpeed, maxMoveSpeed, accelerationRate * Time.deltaTime);
+                timeToUpdateMoveSpeed = 0;
+            }
         }
 
         if (damageTimer > 0)

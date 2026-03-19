@@ -4,9 +4,9 @@ public class EnemyMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed, damage;
+    private float baseMoveSpeed;
     private Transform target;
     private Animator anim;
-
 
     public float hitWaitTime = 0.5f;
     private float hitCounter;
@@ -18,7 +18,16 @@ public class EnemyMovement : MonoBehaviour
 
     public bool isBoss;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Aceleração por Tempo")]
+    public float maxMoveSpeed = 15f;
+    public float accelerationRate = 1.2f;
+
+    [Header("Configuração de Ataque")]
+    public int hitsToReset = 1;
+    private int hitsGivenCounter;
+    private float damageCooldown = 0.5f;
+    private float damageTimer;
+
     void Start()
     {
         target = FindAnyObjectByType<PlayerMovement1>().transform;
@@ -28,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
             moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed * 1.2f);
         }
 
+        baseMoveSpeed = moveSpeed;
         anim = GetComponent<Animator>();
     }
 
@@ -36,20 +46,21 @@ public class EnemyMovement : MonoBehaviour
         if (knockBackCounter > 0)
         {
             knockBackCounter -= Time.deltaTime;
+            if (moveSpeed > 0) moveSpeed = -moveSpeed * 0.5f;
+            if (knockBackCounter <= 0) moveSpeed = Mathf.Abs(moveSpeed * 2f);
+        }
 
-            if (moveSpeed > 0)
-            {
-                moveSpeed = -moveSpeed * 0.5f;
-            }
+        if (hitCounter <= 0 && knockBackCounter <= 0)
+        {
+            moveSpeed = Mathf.MoveTowards(moveSpeed, maxMoveSpeed, accelerationRate * Time.deltaTime);
+        }
 
-            if (knockBackCounter <= 0)
-            {
-                moveSpeed = Mathf.Abs(moveSpeed * 2f);
-            }
+        if (damageTimer > 0)
+        {
+            damageTimer -= Time.deltaTime;
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
@@ -58,21 +69,27 @@ public class EnemyMovement : MonoBehaviour
         anim.SetFloat("moveX", direction.x);
         anim.SetFloat("moveY", direction.y);
 
-
         if (hitCounter > 0)
         {
             hitCounter -= Time.deltaTime;
         }
     }
 
-    // Da dano enquanto o trigger do colisor estiver ativo
     void OnTriggerStay2D(Collider2D other)
     {
         var player = other.gameObject.GetComponent<PlayerHealth>();
-
-        if (player)
+        if (player && damageTimer <= 0)
         {
-            player.TakeDamage(damage * Time.deltaTime);
+            player.TakeDamage(damage);
+            damageTimer = damageCooldown;
+            hitsGivenCounter++;
+
+            if (hitsGivenCounter >= hitsToReset)
+            {
+                moveSpeed = baseMoveSpeed;
+                hitCounter = hitWaitTime;
+                hitsGivenCounter = 0;
+            }
         }
     }
 
@@ -81,24 +98,17 @@ public class EnemyMovement : MonoBehaviour
         if (hitCounter <= 0)
         {
             health -= damageToTake;
+            moveSpeed = baseMoveSpeed;
+            hitsGivenCounter = 0;
 
             if (health <= 0)
             {
-                if (isBoss)
-                {
-                    Debug.Log("Boss derrotado!");
-                    // Aqui da pra adicionar coisas especiais:
-                    // - dropar item raro
-                    // - dar mais pontos
-                    // - mostrar mensagem na tela
-                }
-
+                if (isBoss) Debug.Log("Boss derrotado!");
                 Destroy(gameObject);
                 ScoreController.updateScore(gameObject.name);
             }
 
             DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
-
             hitCounter = hitWaitTime;
         }
     }
@@ -106,7 +116,6 @@ public class EnemyMovement : MonoBehaviour
     public void TakeDamage(float damageToTake, bool shouldKnockback)
     {
         TakeDamage(damageToTake);
-
         if (shouldKnockback)
         {
             knockBackCounter = knockbackTime;

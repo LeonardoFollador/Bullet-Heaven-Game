@@ -11,14 +11,25 @@ public static class ScoreController
         {"Enemy_2_minotauro", 200 },
         {"Enemy_3_voador", 25 },
         {"Enemy_4_coelho", 300},
-        {"Enemy_5_capetinha", 150}
+        {"Enemy_5_capetinha", 150},
+        {"Boss_1", 300 }
     };
 
     public static void updateScore(string enemyType)
     {
-        string key = enemyType.Replace("(Clone)", "");
-        score += scoreByEnemyType[key];
+        string key = enemyType.Replace("(Clone)", "").Trim();
+
+        if (scoreByEnemyType.ContainsKey(key))
+        {
+            score += scoreByEnemyType[key];
+        }
+        else
+        {
+            Debug.LogWarning("Enemy não encontrado no score: " + key);
+        }
     }
+
+
 
     public static int getScore()
     {

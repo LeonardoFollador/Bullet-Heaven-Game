@@ -32,7 +32,11 @@ public class DatabaseManager : MonoBehaviour
 
     void OnDestroy()
     {
-        _connection.Close();
+        if (_connection != null)
+        {
+            _connection.Close();
+            _connection = null;
+        }
     }
 
     public void InsertHistory(string name, int score)

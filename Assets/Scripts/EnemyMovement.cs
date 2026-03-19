@@ -16,11 +16,18 @@ public class EnemyMovement : MonoBehaviour
     public float knockbackTime = 0.5f;
     public float knockBackCounter;
 
+    public bool isBoss;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         target = FindAnyObjectByType<PlayerMovement1>().transform;
-        moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed * 1.2f); // Velocidade randomica  
+
+        if (!isBoss)
+        {
+            moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed * 1.2f);
+        }
+
         anim = GetComponent<Animator>();
     }
 
@@ -77,9 +84,17 @@ public class EnemyMovement : MonoBehaviour
 
             if (health <= 0)
             {
+                if (isBoss)
+                {
+                    Debug.Log("Boss derrotado!");
+                    // Aqui da pra adicionar coisas especiais:
+                    // - dropar item raro
+                    // - dar mais pontos
+                    // - mostrar mensagem na tela
+                }
+
                 Destroy(gameObject);
                 ScoreController.updateScore(gameObject.name);
-                
             }
 
             DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);

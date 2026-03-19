@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -52,8 +53,15 @@ public class EnemyMovement : MonoBehaviour
         if (knockBackCounter > 0)
         {
             knockBackCounter -= Time.deltaTime;
-            if (moveSpeed > 0) moveSpeed = -moveSpeed * 0.5f;
-            if (knockBackCounter <= 0) moveSpeed = Mathf.Abs(moveSpeed * 2f);
+            
+            if (moveSpeed > 0){
+                moveSpeed = isBoss ? -moveSpeed * 0.1f : -moveSpeed * 0.5f;
+            }
+
+            if (knockBackCounter <= 0)
+            {
+                moveSpeed = isBoss ? Mathf.Abs(moveSpeed * 10f) : Mathf.Abs(moveSpeed * 2.0f);    
+            }
         }
 
         if (hitCounter <= 0 && knockBackCounter <= 0)

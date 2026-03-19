@@ -12,7 +12,7 @@ public static class ScoreController
         {"Enemy_3_voador", 25 },
         {"Enemy_4_coelho", 300},
         {"Enemy_5_capetinha", 150},
-        {"Boss_1", 300 }
+        {"Boss_1", 500 }
     };
 
     public static void updateScore(string enemyType)
@@ -25,7 +25,7 @@ public static class ScoreController
         }
         else
         {
-            Debug.LogWarning("Enemy não encontrado no score: " + key);
+            Debug.LogWarning("Enemy nï¿½o encontrado no score: " + key);
         }
     }
 

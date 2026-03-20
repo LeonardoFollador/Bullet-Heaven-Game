@@ -1,138 +1,115 @@
-using NUnit.Framework;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float moveSpeed, damage;
-    private float baseMoveSpeed;
+    private Rigidbody2D rb;
     private Transform target;
     private Animator anim;
 
-    public float hitWaitTime = 0.5f;
-    private float hitCounter;
+    [Header("Config")]
+    public float moveSpeed = 4f; // 👈 velocidade fixa
+    public float damage;
 
     public float health = 10f;
 
-    public float knockbackTime = 0.5f;
-    public float knockBackCounter;
+    private float damageCooldownTimer = 0f;
+  
 
     public bool isBoss;
 
-    [Header("Aceleração por Tempo")]
-    public float maxMoveSpeed = 15f;
-    public float accelerationRate = 100.0f;
+    [Header("Knockback")]
+    public float knockbackTime = 0.5f;
+    private float knockBackCounter;
 
-    private float timeToUpdateMoveSpeed = 0;
-
-    private const float TIME_TO_UPDATE_MOVE_SPEED = 0.2f;
-
-    [Header("Configuração de Ataque")]
-    public int hitsToReset = 1;
-    private int hitsGivenCounter;
-    private float damageCooldown = 0.5f;
+    [Header("Ataque")]
+    public float damageCooldown = 0.5f;
     private float damageTimer;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
         target = FindAnyObjectByType<PlayerMovement1>().transform;
-
-        if (!isBoss)
-        {
-            moveSpeed = Random.Range(moveSpeed * 0.8f, moveSpeed * 1.2f);
-        }
-
-        baseMoveSpeed = moveSpeed;
         anim = GetComponent<Animator>();
     }
 
-    public void Update()
+    void Update()
     {
-        timeToUpdateMoveSpeed += Time.deltaTime;
-
         if (knockBackCounter > 0)
         {
             knockBackCounter -= Time.deltaTime;
-            
-            if (moveSpeed > 0){
-                moveSpeed = isBoss ? -moveSpeed * 0.1f : -moveSpeed * 0.5f;
-            }
-
-            if (knockBackCounter <= 0)
-            {
-                moveSpeed = isBoss ? Mathf.Abs(moveSpeed * 10f) : Mathf.Abs(moveSpeed * 2.0f);    
-            }
-        }
-
-        if (hitCounter <= 0 && knockBackCounter <= 0)
-        {
-            if (timeToUpdateMoveSpeed > TIME_TO_UPDATE_MOVE_SPEED){
-                moveSpeed = Mathf.MoveTowards(moveSpeed, maxMoveSpeed, accelerationRate * Time.deltaTime);
-                timeToUpdateMoveSpeed = 0;
-            }
         }
 
         if (damageTimer > 0)
         {
             damageTimer -= Time.deltaTime;
         }
+
+        if (damageCooldownTimer > 0)
+        {
+            damageCooldownTimer -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
     {
+        if (target == null) return;
+
         Vector2 direction = (target.position - transform.position).normalized;
 
-        rb.linearVelocity = direction * moveSpeed;
+        // 👉 se estiver em knockback, anda ao contrário
+        if (knockBackCounter > 0)
+        {
+            rb.linearVelocity = -direction * moveSpeed;
+        }
+        else
+        {
+            rb.linearVelocity = direction * moveSpeed;
+        }
+
         anim.SetFloat("moveX", direction.x);
         anim.SetFloat("moveY", direction.y);
-
-        if (hitCounter > 0)
-        {
-            hitCounter -= Time.deltaTime;
-        }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        var player = other.gameObject.GetComponent<PlayerHealth>();
+        var player = other.GetComponent<PlayerHealth>();
+
         if (player && damageTimer <= 0)
         {
             player.TakeDamage(damage);
             damageTimer = damageCooldown;
-            hitsGivenCounter++;
-
-            if (hitsGivenCounter >= hitsToReset)
-            {
-                moveSpeed = baseMoveSpeed;
-                hitCounter = hitWaitTime;
-                hitsGivenCounter = 0;
-            }
         }
     }
 
     public void TakeDamage(float damageToTake)
     {
-        if (hitCounter <= 0)
+        if (damageCooldownTimer > 0) return; // 👈 trava o spam
+
+        damageCooldownTimer = damageCooldown;
+
+        health -= damageToTake;
+
+        if (health <= 0)
         {
-            health -= damageToTake;
-            moveSpeed = baseMoveSpeed;
-            hitsGivenCounter = 0;
+            if (isBoss) Debug.Log("Boss derrotado!");
 
-            if (health <= 0)
-            {
-                if (isBoss) Debug.Log("Boss derrotado!");
-                Destroy(gameObject);
-                ScoreController.updateScore(gameObject.name);
-            }
-
-            DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
-            hitCounter = hitWaitTime;
+            Destroy(gameObject);
+            ScoreController.updateScore(gameObject.name);
         }
+
+        DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }
+
+  
 
     public void TakeDamage(float damageToTake, bool shouldKnockback)
     {
         TakeDamage(damageToTake);
+
         if (shouldKnockback)
         {
             knockBackCounter = knockbackTime;

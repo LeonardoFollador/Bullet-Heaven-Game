@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefab: {fileID: 8406570108005937302, guid: 6851c1c20984f2e419e71c5c6c027626,
     type: 3}
-  firstSpawnTime: 1
+  firstSpawnTime: 90
   spawnInterval: 120
 --- !u!1 &498061780
 GameObject:

@@ -703,14 +703,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71665e13d329c671394819494918ec61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  rb: {fileID: 290880344}
   moveSpeed: 3
   damage: 5
-  hitWaitTime: 0.5
   health: 10
-  knockbackTime: 0.5
-  knockBackCounter: 0
   isBoss: 0
+  knockbackTime: 0.5
+  damageCooldown: 0.5
 --- !u!1 &310595471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 380378195}
   - component: {fileID: 380378194}
+  - component: {fileID: 380378196}
   m_Layer: 0
   m_Name: BossSpawner
   m_TagString: Untagged
@@ -1120,8 +1119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefab: {fileID: 8406570108005937302, guid: 5fba2712749165847b6272257f65b086,
     type: 3}
-  firstSpawnTime: 35
-  spawnInterval: 65
+  firstSpawnTime: 30
+  spawnInterval: 120
 --- !u!4 &380378195
 Transform:
   m_ObjectHideFlags: 0
@@ -1137,6 +1136,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &380378196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380378193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131c895469560f546a33b9976c3f84a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
+  bossPrefab: {fileID: 8406570108005937302, guid: 6851c1c20984f2e419e71c5c6c027626,
+    type: 3}
+  firstSpawnTime: 90
+  spawnInterval: 120
 --- !u!1 &498061780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,7 +2967,7 @@ MonoBehaviour:
   holder: {fileID: 2073289152}
   fireballToSpawn: {fileID: 361918103}
   timeBetweenSpawn: 4
-  spawnCounter: 0
+  delayBetweenSwords: 0.15
 --- !u!1 &1186423068
 GameObject:
   m_ObjectHideFlags: 0

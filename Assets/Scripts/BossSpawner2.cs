@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class BossSpawner : MonoBehaviour
+public class BossSpawner2 : MonoBehaviour
 {
     public GameObject bossPrefab;
-    public float firstSpawnTime = 30f;
-    public float spawnInterval = 120f;  
+    public float firstSpawnTime = 90f;   
+    public float spawnInterval = 120f;   
 
     private float timer = 0f;
     private float nextSpawnTime;

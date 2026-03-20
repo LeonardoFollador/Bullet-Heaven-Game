@@ -196,5 +196,5 @@ MonoBehaviour:
   damage: 20
   health: 8
   isBoss: 0
-  knockbackTime: 0.2
+  knockbackTime: 0.3
   damageCooldown: 0.5

@@ -13,7 +13,7 @@ public class SwordWeapon : MonoBehaviour
     private float gameTime;
 
     [Header("Multi Spawn")]
-    public float delayBetweenSwords = 0.15f;
+    public float delayBetweenSwords = 0.25f;
 
     private void Update()
     {
@@ -37,8 +37,8 @@ public class SwordWeapon : MonoBehaviour
 
     int GetSwordAmount()
     {
-        int minutes = Mathf.FloorToInt(gameTime / 60f);
-        return 1 + minutes; // começa com 1 e aumenta a cada minuto
+        int minutes = Mathf.FloorToInt(gameTime / 20f);
+        return Mathf.Clamp(1 + minutes, 1, 5);
     }
 
     IEnumerator SpawnMultiple(int amount)

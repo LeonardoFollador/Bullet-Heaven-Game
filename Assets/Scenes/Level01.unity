@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamager
   damageAmount: 2
-  lifeTime: 5
+  lifeTime: 3
   growSpeed: 2
   destroyParent: 1
   damageRate: 0.5
@@ -2391,8 +2391,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Nova Partida
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bbe15146e99172a408dd89e3a36cadfc, type: 2}
+  m_sharedMaterial: {fileID: -6589836384951440893, guid: bbe15146e99172a408dd89e3a36cadfc,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2967,7 +2968,7 @@ MonoBehaviour:
   holder: {fileID: 2073289152}
   fireballToSpawn: {fileID: 361918103}
   timeBetweenSpawn: 4
-  delayBetweenSwords: 0.15
+  delayBetweenSwords: 0.25
 --- !u!1 &1186423068
 GameObject:
   m_ObjectHideFlags: 0

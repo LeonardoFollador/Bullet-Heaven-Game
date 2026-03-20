@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     private Animator anim;
 
     [Header("Config")]
-    public float moveSpeed = 4f; // 👈 velocidade fixa
+    public float moveSpeed = 9f; // 👈 velocidade fixa
     public float damage;
 
     public float health = 10f;

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossTrapAbility : MonoBehaviour
 {
@@ -38,7 +38,10 @@ public class BossTrapAbility : MonoBehaviour
 
             Vector2 spawnPosition = (Vector2)player.position + new Vector2(x, y);
 
-            Instantiate(wallPrefab, spawnPosition, Quaternion.identity);
+            GameObject wall = Instantiate(wallPrefab, spawnPosition, Quaternion.identity);
+
+            Destroy(wall, 30f); // destrói depois de 30 segundos
         }
     }
 }
+

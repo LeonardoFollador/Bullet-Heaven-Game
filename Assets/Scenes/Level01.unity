@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefab: {fileID: 8406570108005937302, guid: 6851c1c20984f2e419e71c5c6c027626,
     type: 3}
-  firstSpawnTime: 90
+  firstSpawnTime: 1
   spawnInterval: 120
 --- !u!1 &498061780
 GameObject:
@@ -2174,7 +2174,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

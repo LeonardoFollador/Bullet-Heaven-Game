@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 595513342179430898}
   - component: {fileID: 7604505041776057197}
   - component: {fileID: 2192452852153051582}
+  - component: {fileID: -7386181744914394836}
   m_Layer: 7
   m_Name: Boss_2
   m_TagString: Enemy
@@ -192,9 +193,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71665e13d329c671394819494918ec61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 3.5
-  damage: 22
+  moveSpeed: 3
+  damage: 10
   health: 30
   isBoss: 1
   knockbackTime: 0.15
   damageCooldown: 1
+--- !u!114 &-7386181744914394836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aafc74858f639e4792c654a3ad01372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossTrapAbility
+  wallPrefab: {fileID: 5054144114027291697, guid: edba87e75c7be544a850dc0066ea43f4,
+    type: 3}
+  wallCount: 30
+  radius: 4
+  cooldown: 18

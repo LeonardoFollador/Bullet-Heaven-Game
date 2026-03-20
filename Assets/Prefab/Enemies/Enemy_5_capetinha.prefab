@@ -192,10 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71665e13d329c671394819494918ec61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  rb: {fileID: 322488264076262745}
-  moveSpeed: 1.4
+  moveSpeed: 2.2
   damage: 20
-  hitWaitTime: 0.1
   health: 8
+  isBoss: 0
   knockbackTime: 0.2
-  knockBackCounter: 0
+  damageCooldown: 0.5

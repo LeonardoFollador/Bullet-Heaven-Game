@@ -24,6 +24,12 @@ public class BossSpecialSpell2 : MonoBehaviour
     private GameObject indicatorInstance;
     private float baseScale;
 
+    [Header("Scale Animation")]
+    public float growTime = 1.2f;
+    private float growTimer = 0f;
+    private bool isFullyGrown = false;
+    private float currentScale = 0f;
+
     void Start()
     {
         PlayerMovement1 playerScript = FindAnyObjectByType<PlayerMovement1>();
@@ -59,9 +65,31 @@ public class BossSpecialSpell2 : MonoBehaviour
         float desiredSize = pullRadius * 2;
 
         baseScale = desiredSize / spriteSize;
-        indicatorInstance.transform.localScale = Vector3.one * baseScale;
+        indicatorInstance.transform.localScale = Vector3.zero;
 
         timer = duration;
+    }
+
+    void GrowEffect()
+    {
+        if (indicatorInstance == null) return;
+
+        if (!isFullyGrown)
+        {
+            growTimer += Time.deltaTime;
+
+            float t = growTimer / growTime;
+
+            float scale = Mathf.Lerp(0f, baseScale, t);
+            currentScale = scale;
+
+            indicatorInstance.transform.localScale = Vector3.one * currentScale;
+
+            if (t >= 1f)
+            {
+                isFullyGrown = true;
+            }
+        }
     }
 
     void Update()
@@ -79,7 +107,13 @@ public class BossSpecialSpell2 : MonoBehaviour
             return;
         }
 
-        ApplyPullAndDamage();
+        GrowEffect(); // 👈 primeiro cresce
+
+        if (isFullyGrown)
+        {
+            ApplyPullAndDamage(); // 👈 depois ativa
+        }
+
         UpdateIndicator();
     }
 
@@ -111,7 +145,7 @@ public class BossSpecialSpell2 : MonoBehaviour
         indicatorInstance.transform.position = spawnPosition;
 
         float pulse = Mathf.Sin(Time.time * 5f) * 0.02f;
-        indicatorInstance.transform.localScale = Vector3.one * (baseScale + pulse);
+        indicatorInstance.transform.localScale = Vector3.one * (currentScale + pulse);
 
         indicatorInstance.transform.Rotate(0, 0, 50 * Time.deltaTime);
     }

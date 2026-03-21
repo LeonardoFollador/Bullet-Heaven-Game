@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5725970988182493863}
   - component: {fileID: 2743175541685535332}
   - component: {fileID: 650663320958286234}
+  - component: {fileID: 8585610842887248311}
   m_Layer: 7
   m_Name: Boss_3
   m_TagString: Enemy
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 3.2
   damage: 35
-  health: 10
+  health: 100
   isBoss: 1
   knockbackTime: 0.1
   damageCooldown: 0.8
@@ -272,3 +273,16 @@ MonoBehaviour:
   centerPoint: {fileID: 0}
   pullIndicator: {fileID: 8428762908660392078, guid: 137b6335d24d2ff409b4319175bc23ae,
     type: 3}
+--- !u!114 &8585610842887248311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fef1cfc12f7ae40ae0af641d20f806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSpawnEffect
+  darkness: 0.6

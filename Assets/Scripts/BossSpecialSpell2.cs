@@ -1,16 +1,126 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossSpecialSpell2 : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Spawn Config")]
+    public float spawnDistance = 2f;
+
+    [Header("Pull Config")]
+    public float pullForce = 12f;
+    public float duration = 3f;
+    private float timer;
+    public float pullRadius = 5f;
+
+    [Header("Damage")]
+    public float damagePerSecond = 5f;
+
+    private Transform player;
+    private Rigidbody2D playerRb;
+
+    private Vector2 spawnPosition;
+
+    [Header("Visual")]
+    public GameObject pullIndicator;
+    private GameObject indicatorInstance;
+    private float baseScale;
+
     void Start()
     {
-        
+        PlayerMovement1 playerScript = FindAnyObjectByType<PlayerMovement1>();
+
+        if (playerScript == null)
+        {
+            Debug.LogWarning("Player não encontrado!");
+            return;
+        }
+
+        player = playerScript.transform;
+        playerRb = player.GetComponent<Rigidbody2D>();
+
+        // 👉 PEGA DIREÇÃO DO PLAYER
+        Vector2 moveDir = playerScript.lastMoveDirection;
+
+        if (moveDir == Vector2.zero)
+        {
+            // fallback caso esteja parado
+            moveDir = Vector2.up;
+        }
+
+        // 👉 DEFINE POSIÇÃO NA FRENTE DO PLAYER
+        spawnPosition = player.position + (Vector3)(moveDir.normalized * spawnDistance);
+        transform.position = spawnPosition;
+
+        // 🔴 indicador
+        indicatorInstance = Instantiate(pullIndicator, spawnPosition, Quaternion.identity);
+
+        SpriteRenderer sr = indicatorInstance.GetComponent<SpriteRenderer>();
+
+        float spriteSize = sr.bounds.size.x;
+        float desiredSize = pullRadius * 2;
+
+        baseScale = desiredSize / spriteSize;
+        indicatorInstance.transform.localScale = Vector3.one * baseScale;
+
+        timer = duration;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (player == null) return;
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            if (indicatorInstance != null)
+                Destroy(indicatorInstance);
+
+            Destroy(this);
+            return;
+        }
+
+        ApplyPullAndDamage();
+        UpdateIndicator();
+    }
+
+    void ApplyPullAndDamage()
+    {
+        float distance = Vector2.Distance(player.position, spawnPosition);
+
+        if (distance < pullRadius)
+        {
+            Vector2 direction = (spawnPosition - (Vector2)player.position).normalized;
+
+            // 🌀 PUXA
+            player.GetComponent<PlayerMovement1>().externalForce += direction * pullForce * Time.deltaTime;
+
+            // ❤️ DANO AO LONGO DO TEMPO
+            PlayerHealth health = player.GetComponent<PlayerHealth>();
+
+            if (health != null)
+            {
+                health.TakeDamage(damagePerSecond * Time.deltaTime);
+            }
+        }
+    }
+
+    void UpdateIndicator()
+    {
+        if (indicatorInstance == null) return;
+
+        indicatorInstance.transform.position = spawnPosition;
+
+        float pulse = Mathf.Sin(Time.time * 5f) * 0.02f;
+        indicatorInstance.transform.localScale = Vector3.one * (baseScale + pulse);
+
+        indicatorInstance.transform.Rotate(0, 0, 50 * Time.deltaTime);
+    }
+
+    void OnDestroy()
+    {
+        if (indicatorInstance != null)
+        {
+            Destroy(indicatorInstance);
+        }
     }
 }

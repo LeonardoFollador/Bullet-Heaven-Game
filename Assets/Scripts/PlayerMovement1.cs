@@ -8,6 +8,7 @@ public class PlayerMovement1 : MonoBehaviour
     private Rigidbody2D rb;
 
     public Vector2 moveInput;
+    public Vector2 lastMoveDirection;
 
     [Header("Forças externas")]
     public Vector2 externalForce;
@@ -25,7 +26,6 @@ public class PlayerMovement1 : MonoBehaviour
     {
         float moveX, moveY;
 
-        // Input
         if (VirtualJoystick.CountActiveInstances() > 0)
         {
             moveX = VirtualJoystick.GetAxis("Horizontal");
@@ -38,6 +38,12 @@ public class PlayerMovement1 : MonoBehaviour
         }
 
         moveInput = new Vector2(moveX, moveY);
+
+        // 👉 GUARDA A ÚLTIMA DIREÇÃO
+        if (moveInput.sqrMagnitude > 0.01f)
+        {
+            lastMoveDirection = moveInput.normalized;
+        }
 
         // Animator
         if (moveInput.sqrMagnitude > 0.01f)

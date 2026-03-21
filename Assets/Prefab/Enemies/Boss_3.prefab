@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2743175541685535332}
   - component: {fileID: 650663320958286234}
   - component: {fileID: 8585610842887248311}
+  - component: {fileID: 1765003770569352950}
   m_Layer: 7
   m_Name: Boss_3
   m_TagString: Enemy
@@ -286,3 +287,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawnEffect
   darkness: 0.6
+--- !u!114 &1765003770569352950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63a4ec982231b64a900a90116fefc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSkillController
+  spell2Prefab: {fileID: 7043617155074329641, guid: 74046d8843a25cc47926fed9a833c573,
+    type: 3}
+  firstCastDelay: 5
+  cooldown: 3

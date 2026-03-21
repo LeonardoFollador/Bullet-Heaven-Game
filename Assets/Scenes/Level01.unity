@@ -2207,6 +2207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement1
   moveSpeed: 5
   moveInput: {x: 0, y: 0}
+  lastMoveDirection: {x: 0, y: 0}
   externalForce: {x: 0, y: 0}
   externalForceLimit: 25
   pickupRange: 1.5

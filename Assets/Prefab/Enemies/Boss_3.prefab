@@ -302,4 +302,4 @@ MonoBehaviour:
   spell2Prefab: {fileID: 7043617155074329641, guid: 74046d8843a25cc47926fed9a833c573,
     type: 3}
   firstCastDelay: 5
-  cooldown: 3
+  cooldown: 4

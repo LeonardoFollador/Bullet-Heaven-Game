@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 595513342179430898}
   - component: {fileID: 7604505041776057197}
   - component: {fileID: 2192452852153051582}
-  - component: {fileID: -7386181744914394836}
   - component: {fileID: 254369333679587937}
   - component: {fileID: 5725970988182493863}
+  - component: {fileID: 2743175541685535332}
+  - component: {fileID: 650663320958286234}
   m_Layer: 7
   m_Name: Boss_3
   m_TagString: Enemy
@@ -197,27 +198,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 3.2
   damage: 35
-  health: 150
+  health: 10
   isBoss: 1
-  knockbackTime: 0.15
+  knockbackTime: 0.1
   damageCooldown: 0.8
---- !u!114 &-7386181744914394836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8406570108005937302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aafc74858f639e4792c654a3ad01372, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossTrapAbility
-  wallPrefab: {fileID: 5054144114027291697, guid: 7212bbd7cf9e6f040b8a50d88dd4740a,
-    type: 3}
-  wallCount: 80
-  radius: 9
-  cooldown: 99999
 --- !u!114 &254369333679587937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +233,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpecialAbility
   enemyPrefab: {fileID: 5345560655247017796, guid: e7116e5307f098248bbe83a3d8d56ece,
     type: 3}
-  enemyCount: 3
-  radius: 5
-  cooldown: 10
+  enemyCount: 7
+  radius: 6
+  cooldown: 12
+--- !u!114 &2743175541685535332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f35542886b5ac44487dd981e7c55714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossTrapAbilityFinal
+  wallPrefab: {fileID: 5054144114027291697, guid: 7212bbd7cf9e6f040b8a50d88dd4740a,
+    type: 3}
+  wallCount: 80
+  radius: 9
+  cooldown: 999999
+--- !u!114 &650663320958286234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e10b5e5444d2224eabda1ae50084b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSpecialSpell
+  pullForce: 55
+  duration: 99999
+  pullRadius: 2.5
+  pullToBoss: 1
+  centerPoint: {fileID: 0}
+  pullIndicator: {fileID: 8428762908660392078, guid: 137b6335d24d2ff409b4319175bc23ae,
+    type: 3}

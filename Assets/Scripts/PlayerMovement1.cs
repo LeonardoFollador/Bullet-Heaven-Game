@@ -5,22 +5,27 @@ public class PlayerMovement1 : MonoBehaviour
 {
     public float moveSpeed;
     private Animator anim;
-    private Rigidbody2D rb; // usar Rigidbody2D para movimento 2D
+    private Rigidbody2D rb;
 
     public Vector2 moveInput;
+
+    [Header("Forças externas")]
+    public Vector2 externalForce;
+    public float externalForceLimit = 25f; // 👈 limite pra não ficar absurdo
 
     public float pickupRange = 1.5f;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>(); // Pega o componente Rigidbody2D
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         float moveX, moveY;
-        // Pega o input do jogador
+
+        // Input
         if (VirtualJoystick.CountActiveInstances() > 0)
         {
             moveX = VirtualJoystick.GetAxis("Horizontal");
@@ -32,32 +37,33 @@ public class PlayerMovement1 : MonoBehaviour
             moveY = Input.GetAxisRaw("Vertical");
         }
 
-
-
         moveInput = new Vector2(moveX, moveY);
 
-        // Atualiza o Animator
-        if (moveInput.sqrMagnitude > 0.01f) // Se o jogador est� se movendo
+        // Animator
+        if (moveInput.sqrMagnitude > 0.01f)
         {
             anim.SetBool("isMoving", true);
-
-            // Atualiza os par�metros de dire��o. A Blend Tree de ANDAR vai usar isso.
             anim.SetFloat("moveX", moveX);
             anim.SetFloat("moveY", moveY);
         }
-        else // Se o jogador est� PARADO
+        else
         {
             anim.SetBool("isMoving", false);
-            // O Animator vai parar de receber atualiza��es de dire��o aqui.
-            // Ele vai continuar usando os �LTIMOS VALORES de moveX e moveY que recebeu,
-            // fazendo a Blend Tree de IDLE mostrar a dire��o correta.
         }
     }
 
-    // FixedUpdate para aplicar f�sica (movimento)
     void FixedUpdate()
     {
-        // Aplica o movimento
-        rb.linearVelocity = moveInput.normalized * moveSpeed;
+        // Movimento do jogador
+        Vector2 movement = moveInput.normalized * moveSpeed;
+
+        // Limita força externa
+        externalForce = Vector2.ClampMagnitude(externalForce, externalForceLimit);
+
+        // Aplica movimento + forças externas
+        rb.linearVelocity = movement + externalForce;
+
+        // Zera a força externa (importante!)
+        externalForce = Vector2.zero;
     }
 }

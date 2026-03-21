@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class BossTrapAbilityFinal : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class BossTrapAbilityFinal : MonoBehaviour
 
     public float cooldown = 8f;
     private float timer;
+    private List<GameObject> spawnedWalls = new List<GameObject>();
 
     private Transform player;
 
@@ -40,8 +42,26 @@ public class BossTrapAbilityFinal : MonoBehaviour
 
             GameObject wall = Instantiate(wallPrefab, spawnPosition, Quaternion.identity);
 
-            
+            spawnedWalls.Add(wall);
+
+
         }
+    }
+
+    public void ClearTrap()
+    {
+        foreach (GameObject wall in spawnedWalls)
+        {
+            if (wall != null)
+                Destroy(wall);
+        }
+
+        spawnedWalls.Clear();
+    }
+
+    void OnDestroy()
+    {
+        ClearTrap();
     }
 }
 

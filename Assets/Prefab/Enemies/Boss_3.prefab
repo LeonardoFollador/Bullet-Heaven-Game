@@ -266,9 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10b5e5444d2224eabda1ae50084b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossSpecialSpell
-  pullForce: 55
+  pullForce: 60
   duration: 99999
-  pullRadius: 2.5
+  pullRadius: 2.8
   pullToBoss: 1
   centerPoint: {fileID: 0}
   pullIndicator: {fileID: 8428762908660392078, guid: 137b6335d24d2ff409b4319175bc23ae,

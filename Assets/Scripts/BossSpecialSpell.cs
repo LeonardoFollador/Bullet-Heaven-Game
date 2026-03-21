@@ -109,4 +109,12 @@ public class BossSpecialSpell : MonoBehaviour
 
         indicatorInstance.transform.Rotate(0, 0, 50 * Time.deltaTime);
     }
+
+    void OnDestroy()
+    {
+        if (indicatorInstance != null)
+        {
+            Destroy(indicatorInstance);
+        }
+    }
 }

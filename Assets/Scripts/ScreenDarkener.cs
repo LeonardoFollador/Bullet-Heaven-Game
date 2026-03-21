@@ -27,4 +27,9 @@ public class ScreenDarkener : MonoBehaviour
     {
         targetAlpha = 0f;
     }
+
+    public void Lighten()
+    {
+        targetAlpha = 0f;
+    }
 }

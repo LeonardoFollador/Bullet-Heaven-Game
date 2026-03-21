@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -87,7 +88,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void TakeDamage(float damageToTake)
     {
-        if (damageCooldownTimer > 0) return; // 👈 trava o spam
+        if (damageCooldownTimer > 0) return;
 
         damageCooldownTimer = damageCooldown;
 
@@ -95,7 +96,25 @@ public class EnemyMovement : MonoBehaviour
 
         if (health <= 0)
         {
-            if (isBoss) Debug.Log("Boss derrotado!");
+            
+            if (isBoss)
+            {
+                Debug.Log("Boss derrotado!");
+
+                ScreenDarkener darkener = FindAnyObjectByType<ScreenDarkener>();
+
+                if (darkener != null)
+                {
+                    darkener.Lighten();
+                }
+
+                BossTrapAbilityFinal trap = GetComponent<BossTrapAbilityFinal>();
+
+                if (trap != null)
+                {
+                    trap.ClearTrap();
+                }
+            }
 
             Destroy(gameObject);
             ScoreController.updateScore(gameObject.name);
@@ -104,7 +123,19 @@ public class EnemyMovement : MonoBehaviour
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }
 
-  
+    void Die()
+    {
+        ScreenDarkener darkener = FindAnyObjectByType<ScreenDarkener>();
+
+        if (darkener != null)
+        {
+            darkener.Lighten();
+        }
+
+        Destroy(gameObject);
+    }
+
+
 
     public void TakeDamage(float damageToTake, bool shouldKnockback)
     {

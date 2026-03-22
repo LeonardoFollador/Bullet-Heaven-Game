@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7604505041776057197}
   - component: {fileID: 2192452852153051582}
   - component: {fileID: 5583251658092100233}
+  - component: {fileID: 3688319633177556839}
   m_Layer: 7
   m_Name: Boss_1
   m_TagString: Enemy
@@ -216,3 +217,22 @@ MonoBehaviour:
   enemyCount: 12
   radius: 4
   cooldown: 10
+--- !u!114 &3688319633177556839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6356713341fb174fa9ca67186149c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossExplosionSpell
+  dangerIndicator: {fileID: 8428762908660392078, guid: 6dbb96b251ad8e9439226944c554e19a,
+    type: 3}
+  delay: 1.1
+  cooldown: 4.6
+  explosionRadius: 3.2
+  damage: 30
+  predictionDistance: 3.8

@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossTeleportBlink
   player: {fileID: 0}
-  cooldown: 6
+  cooldown: 5
   teleportDistance: 4.6
   teleportDelay: 0.1
 --- !u!114 &6514891679625106599
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPullSkill
   pullForce: 50
-  duration: 3.5
-  cooldown: 7
+  duration: 3.2
+  cooldown: 6.5
   pullRadius: 3
   damagePerSecond: 10
   pullToBoss: 1
@@ -251,4 +251,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossVoadorSpawnEffect
   darkness: 1
-  cooldown: 5
+  cooldown: 4.8

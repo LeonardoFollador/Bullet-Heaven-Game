@@ -571,8 +571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenDarknerForASecond
   overlay: {fileID: 1279662123}
-  fadeSpeed: 2.2
-  cooldownBeforeLighten: 1
+  fadeSpeed: 2.4
+  cooldownBeforeLighten: 1.1
 --- !u!1 &290880342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefab: {fileID: 8406570108005937302, guid: c23c1520628043f41a12239c62d3b25b,
     type: 3}
-  firstSpawnTime: 150
+  firstSpawnTime: 210
   spawnInterval: 99999
 --- !u!114 &380378198
 MonoBehaviour:
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefab: {fileID: 8406570108005937302, guid: 3ee16d52914fcc44e853241c3c823394,
     type: 3}
-  firstSpawnTime: 200
+  firstSpawnTime: 1
   spawnInterval: 99999
 --- !u!1 &498061780
 GameObject:
@@ -3201,8 +3201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 413.25433, y: 724.72437}
-  m_SizeDelta: {x: 87485.81, y: 145885.81}
+  m_AnchoredPosition: {x: 426.92847, y: 870.5825}
+  m_SizeDelta: {x: 155002.16, y: 241605.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1318272192
 GameObject:

@@ -64,23 +64,50 @@ public class BossExplosionSpell : MonoBehaviour
 
         SpriteRenderer sr = indicator.GetComponent<SpriteRenderer>();
 
-        // pega o tamanho ORIGINAL do sprite (sem scale)
         float spriteSize = sr.sprite.bounds.size.x;
+        float finalScale = (explosionRadius * 2) / spriteSize;
 
-        // calcula o scale correto
-        float scale = (explosionRadius * 2) / spriteSize;
+        indicator.transform.localScale = Vector3.zero;
 
-        // aplica scale
-        indicator.transform.localScale = Vector3.one * scale;
+        float timer = 0f;
 
+        // 📌 CONFIGURAÇÕES NOVAS
+        float shakeStartTime = delay * 0.7f; // começa a tremer nos últimos 30%
+        float shakeIntensity = 0.1f;
 
+        Vector3 originalPos = indicator.transform.position;
 
+        while (timer < delay)
+        {
+            timer += Time.deltaTime;
 
+            float t = timer / delay;
 
+            // crescimento
+            float currentScale = Mathf.Lerp(0f, finalScale, t * t);
+            indicator.transform.localScale = Vector3.one * currentScale;
 
-        Debug.DrawLine(targetPosition, targetPosition + Vector2.right * explosionRadius, Color.blue, 10f);
+            // 🎯 TREMIDA
+            if (timer >= shakeStartTime)
+            {
+                float shakeX = Random.Range(-1f, 1f) * shakeIntensity;
+                float shakeY = Random.Range(-1f, 1f) * shakeIntensity;
 
-        yield return new WaitForSeconds(delay);
+                indicator.transform.position = originalPos + new Vector3(shakeX, shakeY, 0);
+            }
+            else
+            {
+                indicator.transform.position = originalPos;
+            }
+
+            yield return null;
+        }
+
+        // ⚫ MUDA cor NA HORA DA EXPLOSÃO
+        sr.color = Color.red;
+
+        // 💥 pequena pausa pra dar impacto visual (opcional)
+        yield return new WaitForSeconds(0.1f);
 
         // 💥 explosão
         Collider2D[] hits = Physics2D.OverlapCircleAll(targetPosition, explosionRadius);
@@ -95,19 +122,14 @@ public class BossExplosionSpell : MonoBehaviour
 
             if (hp != null)
             {
-                Vector2 playerPos = hp.transform.position;
-
-                float distance = Vector2.Distance(targetPosition, playerPos);
-
-                float adjustedRadius = explosionRadius * 0.8f;
+                float distance = Vector2.Distance(targetPosition, hp.transform.position);
 
                 if (distance <= explosionRadius)
                 {
-                    Debug.Log("🔥 DANO APLICADO UMA VEZ!");
+                    Debug.Log("🔥 DANO APLICADO ExplosionSkill!");
 
                     hp.TakeDamage(damage);
-
-                    damageApplied = true; // 👈 impede múltiplos hits
+                    damageApplied = true;
                 }
             }
         }

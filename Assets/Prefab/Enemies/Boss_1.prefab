@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossExplosionSpell
   dangerIndicator: {fileID: 8428762908660392078, guid: 6dbb96b251ad8e9439226944c554e19a,
     type: 3}
-  delay: 1.1
+  delay: 1
   cooldown: 4.6
   explosionRadius: 3.2
   damage: 30

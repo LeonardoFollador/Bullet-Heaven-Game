@@ -56,7 +56,7 @@ public class BossProjectileShooter : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("ATIROU");
+        
 
         PlayerMovement1 player = FindAnyObjectByType<PlayerMovement1>();
         if (player == null) return;

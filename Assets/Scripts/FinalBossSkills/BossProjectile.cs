@@ -17,7 +17,7 @@ public class BossProjectile : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Lifetime: " + lifetime);
+        
         Destroy(gameObject, lifetime);
     }
 

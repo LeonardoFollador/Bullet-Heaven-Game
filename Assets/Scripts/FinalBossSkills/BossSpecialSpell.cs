@@ -83,7 +83,7 @@ public class BossSpecialSpell : MonoBehaviour
         {
             Vector2 direction = (targetPosition - (Vector2)player.position).normalized;
 
-            Debug.Log(distance);
+            
 
             player.GetComponent<PlayerMovement1>().externalForce += direction * pullForce * Time.deltaTime;
         }

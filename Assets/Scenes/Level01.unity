@@ -1146,6 +1146,7 @@ GameObject:
   - component: {fileID: 380378194}
   - component: {fileID: 380378196}
   - component: {fileID: 380378197}
+  - component: {fileID: 380378198}
   m_Layer: 0
   m_Name: BossSpawner
   m_TagString: Untagged
@@ -1215,6 +1216,22 @@ MonoBehaviour:
   bossPrefab: {fileID: 8406570108005937302, guid: c23c1520628043f41a12239c62d3b25b,
     type: 3}
   firstSpawnTime: 150
+  spawnInterval: 99999
+--- !u!114 &380378198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380378193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131c895469560f546a33b9976c3f84a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
+  bossPrefab: {fileID: 8406570108005937302, guid: 3ee16d52914fcc44e853241c3c823394,
+    type: 3}
+  firstSpawnTime: 250
   spawnInterval: 99999
 --- !u!1 &498061780
 GameObject:

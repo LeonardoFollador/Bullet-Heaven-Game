@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7604505041776057197}
   - component: {fileID: 2192452852153051582}
   - component: {fileID: -7386181744914394836}
+  - component: {fileID: -3398383839633037338}
   m_Layer: 7
   m_Name: Boss_2
   m_TagString: Enemy
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 3
   damage: 10
-  health: 30
+  health: 40
   isBoss: 1
   knockbackTime: 0.15
   damageCooldown: 1
@@ -216,3 +217,19 @@ MonoBehaviour:
   wallCount: 60
   radius: 8
   cooldown: 32
+--- !u!114 &-3398383839633037338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a510baad502774fa6fdea47e9dcc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossProjectileShooter1
+  projectilePrefab: {fileID: 3753776857634181083, guid: 3256f4cef3c8ac54892a52d0b1875eaa,
+    type: 3}
+  firstShotDelay: 3
+  cooldown: 3.7

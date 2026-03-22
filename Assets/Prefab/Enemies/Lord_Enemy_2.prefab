@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 3
-  damage: 25
+  damage: 12
   health: 5
   isBoss: 0
   knockbackTime: 0.35
-  damageCooldown: 0.8
+  damageCooldown: 0.5

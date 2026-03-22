@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 650663320958286234}
   - component: {fileID: 8585610842887248311}
   - component: {fileID: 1765003770569352950}
+  - component: {fileID: 442290911178266035}
   m_Layer: 7
   m_Name: Boss_3
   m_TagString: Enemy
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 3.2
-  damage: 35
+  damage: 15
   health: 100
   isBoss: 1
   knockbackTime: 0.1
@@ -218,9 +219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpecialAbility
   enemyPrefab: {fileID: 3917761700837210742, guid: 2a44568bf778c914eabd497450ce55ae,
     type: 3}
-  enemyCount: 3
-  radius: 5
-  cooldown: 10
+  enemyCount: 5
+  radius: 6
+  cooldown: 11
 --- !u!114 &5725970988182493863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,9 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpecialAbility
   enemyPrefab: {fileID: 5345560655247017796, guid: e7116e5307f098248bbe83a3d8d56ece,
     type: 3}
-  enemyCount: 7
+  enemyCount: 5
   radius: 6
-  cooldown: 12
+  cooldown: 13
 --- !u!114 &2743175541685535332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,4 +303,20 @@ MonoBehaviour:
   spell2Prefab: {fileID: 7043617155074329641, guid: 74046d8843a25cc47926fed9a833c573,
     type: 3}
   firstCastDelay: 5
-  cooldown: 4
+  cooldown: 3.5
+--- !u!114 &442290911178266035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406570108005937302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc55f944597cc64eaf0f423c59aed38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossProjectileShooter
+  projectilePrefab: {fileID: 3753776857634181083, guid: 72d3ec6f217345a408c3324a1340b7ee,
+    type: 3}
+  firstShotDelay: 3
+  cooldown: 3.2

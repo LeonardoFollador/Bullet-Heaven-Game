@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+
+using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenDarkener1 : MonoBehaviour
+public class ScreenDarknerForASecond : MonoBehaviour
 {
     public Image overlay;
     public float fadeSpeed = 0.2f;
@@ -13,11 +14,11 @@ public class ScreenDarkener1 : MonoBehaviour
 
     void Update()
     {
-        // Atualiza a transparência da tela
+        // Atualiza a transpar�ncia da tela
         Color color = overlay.color;
         color.a = Mathf.MoveTowards(color.a, targetAlpha, fadeSpeed * Time.deltaTime);
         overlay.color = color;
-
+       
         // Se estiver no cooldown, conta o tempo
         if (coolingDown)
         {
@@ -36,6 +37,7 @@ public class ScreenDarkener1 : MonoBehaviour
         targetAlpha = intensity;
         cooldownTimer = cooldownBeforeLighten; // inicia o contador
         coolingDown = true;                     // ativa o cooldown
+        Debug.Log("Darken chamado com intensidade: " + intensity);
     }
 
     // Clareia a tela imediatamente

@@ -17,29 +17,25 @@ public class SwordWeapon : MonoBehaviour
 
     private void Update()
     {
-        // rotação
         holder.rotation = Quaternion.Euler(0f, 0f,
             holder.rotation.eulerAngles.z + (rotateSpeed * Time.deltaTime));
-
-        gameTime += Time.deltaTime;
 
         spawnCounter -= Time.deltaTime;
 
         if (spawnCounter <= 0f)
         {
-            int swordsToSpawn = GetSwordAmount();
+            int swordsToSpawn = ExperienceLevelController.instance.swordCount;
 
             StartCoroutine(SpawnMultiple(swordsToSpawn));
-
             spawnCounter = timeBetweenSpawn;
         }
     }
 
-    int GetSwordAmount()
-    {
-        int minutes = Mathf.FloorToInt(gameTime / 20f);
-        return Mathf.Clamp(1 + minutes, 1, 5);
-    }
+    // int GetSwordAmount()
+    // {
+    //     int minutes = Mathf.FloorToInt(gameTime / 20f);
+    //     return Mathf.Clamp(1 + minutes, 1, 5);
+    // }
 
     IEnumerator SpawnMultiple(int amount)
     {

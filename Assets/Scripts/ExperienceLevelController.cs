@@ -12,6 +12,8 @@ public class ExperienceLevelController : MonoBehaviour
 
     public float bonusDamage = 0f;
 
+    public int swordCount = 1;
+
     public void Awake()
     {
         instance = this;
@@ -48,6 +50,15 @@ public class ExperienceLevelController : MonoBehaviour
     public void UpgradeDamage()
     {
         bonusDamage += 1f;
+        ResumeGame();
+    }
+
+    public void UpgradeSwordCount()
+    {
+        if (swordCount < 10) // Limite máximo de espadas
+        {
+            swordCount++;
+        }
         ResumeGame();
     }
 

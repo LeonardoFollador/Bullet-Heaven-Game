@@ -200,6 +200,9 @@ MonoBehaviour:
   isBoss: 1
   knockbackTime: 0.15
   damageCooldown: 1
+  expPrefab: {fileID: 7245554473413233147, guid: 6e8d7c61c048b43bca06dd544a698927,
+    type: 3}
+  expAmount: 20
 --- !u!114 &-7386181744914394836
 MonoBehaviour:
   m_ObjectHideFlags: 0

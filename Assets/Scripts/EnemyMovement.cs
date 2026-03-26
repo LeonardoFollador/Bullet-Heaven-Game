@@ -88,6 +88,8 @@ public class EnemyMovement : MonoBehaviour
 
     public GameObject expPrefab;
 
+    public int expAmount = 1;
+
     public void TakeDamage(float damageToTake)
     {
         if (damageCooldownTimer > 0) return;
@@ -101,7 +103,11 @@ public class EnemyMovement : MonoBehaviour
 
             if (expPrefab != null)
             {
-                Instantiate(expPrefab, transform.position, Quaternion.identity);
+                for (int i = 0; i < expAmount; i++)
+                {
+                    Vector3 randomOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
+                    Instantiate(expPrefab, transform.position + randomOffset, Quaternion.identity);
+                }
             }
 
             if (isBoss)
@@ -121,6 +127,9 @@ public class EnemyMovement : MonoBehaviour
                 {
                     trap.ClearTrap();
                 }
+
+                Destroy(gameObject);
+                ScoreController.updateScore(gameObject.name);
             }
 
             Destroy(gameObject);

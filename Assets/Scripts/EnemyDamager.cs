@@ -53,7 +53,8 @@ public class EnemyDamager : MonoBehaviour
             EnemyMovement enemy = other.GetComponent<EnemyMovement>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damageAmount, shouldKnockback);
+                float totalDamage = damageAmount + ExperienceLevelController.instance.bonusDamage;
+                enemy.TakeDamage(totalDamage, shouldKnockback);
             }
         }
     }

@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public float health = 10f;
 
     private float damageCooldownTimer = 0f;
-  
+
 
     public bool isBoss;
 
@@ -86,6 +86,8 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public GameObject expPrefab;
+
     public void TakeDamage(float damageToTake)
     {
         if (damageCooldownTimer > 0) return;
@@ -96,7 +98,12 @@ public class EnemyMovement : MonoBehaviour
 
         if (health <= 0)
         {
-            
+
+            if (expPrefab != null)
+            {
+                Instantiate(expPrefab, transform.position, Quaternion.identity);
+            }
+
             if (isBoss)
             {
                 Debug.Log("Boss derrotado!");

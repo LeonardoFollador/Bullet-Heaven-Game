@@ -15,6 +15,7 @@ public class ExperiencePickup : MonoBehaviour
     void Start()
     {
         player = PlayerHealth.instance.GetComponent<PlayerMovement1>();
+        Destroy(gameObject, 120f);
     }
 
     // Update is called once per frame

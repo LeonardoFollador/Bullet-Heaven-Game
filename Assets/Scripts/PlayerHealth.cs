@@ -4,19 +4,15 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public GameOverController gameOverController;
-
     public static PlayerHealth instance;
-
     public float currentHealth, maxHealth;
-
     public Slider healthSlider;
-
     private Animator anim;
     private bool dead = false;
-    
-    private float cureCounter=0;
 
-    private float timeToCure = 5;
+    private float cureCounter = 0;
+    public float timeToCure = 5f;
+    public float healthRegenAmount = 10f;
 
     void Awake()
     {
@@ -24,13 +20,11 @@ public class PlayerHealth : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
         currentHealth = maxHealth;
 
-        // // Barra de vida
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
@@ -38,28 +32,25 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (dead) return;
 
         cureCounter += Time.deltaTime;
 
-
         if (cureCounter > timeToCure)
         {
             cureCounter = 0;
 
-            currentHealth += 10;
+            currentHealth += healthRegenAmount;
 
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;
             }
-            
+
             if (healthSlider != null)
             {
-                // Atualiza a barra de vida
                 healthSlider.value = currentHealth;
             }
         }
@@ -74,7 +65,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (healthSlider != null)
         {
-            // Atualiza a barra de vida
             healthSlider.value = currentHealth;
         }
 
@@ -83,13 +73,11 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             dead = true;
 
-            // Chama a anima��o de morte
             if (anim != null)
             {
                 anim.SetTrigger("isDead");
             }
 
-            // Para o movimento do jogador
             GetComponent<PlayerMovement1>().enabled = false;
             gameOverController.ShowGameOverUI();
         }
@@ -97,13 +85,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void FreezeGame()
     {
-        // Trava a anima��o no �ltimo frame
         if (anim != null)
         {
             anim.enabled = false;
         }
-
-        // Para o jogo
         Time.timeScale = 0f;
     }
 }

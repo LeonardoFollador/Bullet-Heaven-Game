@@ -207,7 +207,7 @@ MonoBehaviour:
   damageCooldown: 0.8
   expPrefab: {fileID: 7245554473413233147, guid: 6e8d7c61c048b43bca06dd544a698927,
     type: 3}
-  expAmount: 20
+  expAmount: 15
 --- !u!114 &254369333679587937
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5665,7 +5665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceLevelController
   currentLevel: 1
   currentExperience: 0
-  expToNextLevel: 20
+  expToNextLevel: 15
   levelUpPanel: {fileID: 1932936382}
   bonusDamage: 0
   swordCount: 1

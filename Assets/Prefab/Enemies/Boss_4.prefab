@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 4.3
   damage: 10
-  health: 40
+  health: 55
   isBoss: 1
   knockbackTime: 0.15
   damageCooldown: 0.5
@@ -236,7 +236,7 @@ MonoBehaviour:
   duration: 3.2
   cooldown: 6.5
   pullRadius: 3
-  damagePerSecond: 10
+  damagePerSecond: 90
   pullToBoss: 1
   centerPoint: {fileID: 0}
   pullIndicator: {fileID: 8428762908660392078, guid: 137b6335d24d2ff409b4319175bc23ae,

@@ -219,7 +219,7 @@ MonoBehaviour:
     type: 3}
   wallCount: 60
   radius: 8
-  cooldown: 32
+  cooldown: 35
 --- !u!114 &-3398383839633037338
 MonoBehaviour:
   m_ObjectHideFlags: 0

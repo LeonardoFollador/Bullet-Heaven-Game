@@ -237,5 +237,5 @@ MonoBehaviour:
   delay: 1
   cooldown: 4.6
   explosionRadius: 3.2
-  damage: 30
+  damage: 300
   predictionDistance: 3.8

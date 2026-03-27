@@ -1581,6 +1581,7 @@ MonoBehaviour:
   knockbackTime: 0.5
   damageCooldown: 0.5
   expPrefab: {fileID: 0}
+  expAmount: 1
 --- !u!1 &299477754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2041,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 8406570108005937302, guid: 5fba2712749165847b6272257f65b086,
     type: 3}
   firstSpawnTime: 30
-  spawnInterval: 99999
+  spawnInterval: 240
 --- !u!4 &380378195
 Transform:
   m_ObjectHideFlags: 0
@@ -2071,7 +2072,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 8406570108005937302, guid: 6851c1c20984f2e419e71c5c6c027626,
     type: 3}
   firstSpawnTime: 90
-  spawnInterval: 99999
+  spawnInterval: 240
 --- !u!114 &380378197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,7 +2088,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 8406570108005937302, guid: c23c1520628043f41a12239c62d3b25b,
     type: 3}
   firstSpawnTime: 210
-  spawnInterval: 99999
+  spawnInterval: 240
 --- !u!114 &380378198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2102,8 +2103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
   bossPrefab: {fileID: 8406570108005937302, guid: 3ee16d52914fcc44e853241c3c823394,
     type: 3}
-  firstSpawnTime: 130
-  spawnInterval: 99999
+  firstSpawnTime: 150
+  spawnInterval: 240
 --- !u!1 &381344560
 GameObject:
   m_ObjectHideFlags: 0

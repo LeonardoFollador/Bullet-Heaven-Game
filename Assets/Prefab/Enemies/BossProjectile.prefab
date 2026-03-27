@@ -171,4 +171,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossProjectile
   speed: 5
   lifetime: 4
-  damage: 15
+  damage: 120
